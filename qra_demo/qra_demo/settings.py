@@ -10,22 +10,34 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+DJANGO_KEY = ''
+HEROKU_HOST = ''
+
+ENV_FILE = BASE_DIR / 'qra_demo' / '.env'
+if ENV_FILE.exists():
+    from dotenv import load_dotenv
+    load_dotenv(ENV_FILE)
+    DJANGO_KEY = os.getenv('DJANGO_SECRET_KEY', DJANGO_KEY)
+    HEROKU_HOST = os.getenv('ALLOWED_HOSTS', HEROKU_HOST)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-iriu&(88f4^7)bi!^0_f-_s2_*j5k8sh1p0@#54$d2!$p5+df!'
+SECRET_KEY = DJANGO_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [HEROKU_HOST]
 
 
 # Application definition
