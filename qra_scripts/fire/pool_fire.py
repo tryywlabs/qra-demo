@@ -168,7 +168,8 @@ def interpolate_fv_params(sd: float) -> InterpolatedFvParams:
     s0, y0, b0, c0 = FV_PARAMS[0]
     return InterpolatedFvParams(s0, y0, b0, c0, "Fallback clamp")
 
-
+'''Calculation Steps
+'''
 def calculate_step1(
     *,
     D: float,
@@ -181,15 +182,15 @@ def calculate_step1(
     q: float,
 ) -> Step1Result:
     if D <= 0:
-        raise ValueError("D must be > 0.")
+        raise ValueError("No D less than 0 senior")
     if Gb <= 0:
-        raise ValueError("Gb must be > 0.")
+        raise ValueError("No Gb less than 0 sire")
     if rho <= 0:
-        raise ValueError("rho must be > 0.")
+        raise ValueError("No rho less than 0 mista")
     if g <= 0:
-        raise ValueError("g must be > 0.")
+        raise ValueError("No g less than 0 senior pasta")
     if U < 0:
-        raise ValueError("U must be >= 0.")
+        raise ValueError("No U less than 0 sensei")
 
     F = Gb / (rho * sqrt(g * D))
     if F <= 0:
@@ -203,7 +204,7 @@ def calculate_step1(
 
 def calculate_step2(*, D: float) -> Step2Result:
     if D <= 0:
-        raise ValueError("D must be > 0.")
+        raise ValueError("D must be > 0. How u gon have a <=0 diameter bruh")
 
     log_d = log10(D)
     y = (9.412 + 2.758 * log_d) / 100.0

@@ -21,9 +21,9 @@ from .views import home, module_directory
 
 urlpatterns = [
     path("", home, name="home"),
-    path("fire/", module_directory, {"module_key": "fire"}, name="fire_directory"),
     path("admin/", admin.site.urls),
     path("", include("cons_gas.urls")),
+    path("", include("cons_fire.urls")),
     path("", include("cons_exp.urls")),
     path("leak/", include("leak.urls")),
 ]

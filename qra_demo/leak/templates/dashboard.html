@@ -395,10 +395,7 @@
                 {% if panel.result %}
                 <div class="result">
                   <span>{{ panel.result.label }}</span>
-                  <strong
-                    >{{ panel.result.value|floatformat:4 }} {{ panel.result.unit
-                    }}</strong
-                  >
+                  <strong>{{ panel.result.value|floatformat:4 }} {{ panel.result.unit }}</strong>
                 </div>
                 {% endif %}
               </div>
@@ -429,9 +426,7 @@
             <article class="history-item">
               <header>
                 <strong>{{ record.get_calculation_type_display }}</strong>
-                <span class="stamp"
-                  >{{ record.created_at|date:"Y-m-d H:i" }}</span
-                >
+                <span class="stamp">{{ record.created_at|date:"Y-m-d H:i" }}</span>
               </header>
               <div>{{ record.result|floatformat:4 }} {{ record.unit }}</div>
               <code>{{ record.inputs }}</code>

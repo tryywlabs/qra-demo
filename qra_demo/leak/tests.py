@@ -47,8 +47,8 @@ class DashboardViewTests(TestCase):
         self.assertRedirects(response, reverse("leak:dashboard"))
         self.assertEqual(LeakCalculation.objects.count(), 0)
 
-    def test_fire_directory_page_renders(self):
-        response = self.client.get(reverse("fire_directory"))
+    def test_fire_dashboard_page_renders(self):
+        response = self.client.get(reverse("fire_dashboard"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "pool_fire.py")
+        self.assertContains(response, "Fire Calculators")
