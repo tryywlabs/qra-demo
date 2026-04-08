@@ -392,17 +392,11 @@
                 {% if panel.result %}
                 <div class="result">
                   <span>{{ panel.result.label }}</span>
-                  <strong
-                    >{{ panel.result.value|floatformat:4 }} {{ panel.result.unit
-                    }}</strong
-                  >
+                  <strong>{{ panel.result.value|floatformat:4 }} {{ panel.result.unit }}</strong>
                   {% if panel.result.details %}
                   <div class="result-details">
                     {% for detail in panel.result.details %}
-                    <span
-                      >{{ detail.label }}: {{ detail.value|floatformat:4
-                      }}</span
-                    >
+                    <span>{{ detail.label }}: {{ detail.value|floatformat:4 }}</span>
                     {% endfor %}
                   </div>
                   {% endif %}
@@ -430,14 +424,14 @@
             <article class="history-item">
               <header>
                 <strong>{{ record.get_calculation_type_display }}</strong>
-                <span class="stamp"
-                  >{{ record.created_at|date:"Y-m-d H:i" }}</span
-                >
+                <span class="stamp">{{ record.created_at|date:"Y-m-d H:i" }}</span>
               </header>
               <div>
-                {% if record.summary_value != None %} {{
-                record.summary_value|floatformat:4 }} {{ record.unit }} {% else
-                %} No summary value {% endif %}
+                {% if record.summary_value != None %}
+                {{ record.summary_value|floatformat:4 }} {{ record.unit }}
+                {% else %}
+                No summary value
+                {% endif %}
               </div>
               <div class="preview">{{ record.result_preview }}</div>
             </article>

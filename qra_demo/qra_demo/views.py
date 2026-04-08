@@ -32,10 +32,10 @@ MODULES = {
         "title": "Fire",
         "category": "Consequence",
         "heading": "Consequences",
-        "description": "Thermal consequence scripts for fire scenarios.",
+        "description": "Thermal consequence calculator for pool-fire radiation scenarios.",
         "directory": PROJECT_ROOT / "qra_scripts" / "fire",
-        "href": "fire_directory",
-        "kind": "directory",
+        "href": "fire_dashboard",
+        "kind": "app",
         "accent": "fire",
     },
     "explosion": {
