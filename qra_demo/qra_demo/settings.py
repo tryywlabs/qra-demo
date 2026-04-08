@@ -40,10 +40,16 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-local-dev-key")
 DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
 ALLOWED_HOSTS = _get_list_env("ALLOWED_HOSTS")
-if DEBUG and not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-elif not DEBUG and not ALLOWED_HOSTS:
-    ALLOWED_HOSTS = [".herokuapp.com"]
+
+# Always keep local/dev hosts available.
+for host in ("127.0.0.1", "localhost", "testserver"):
+    if host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(host)
+
+# Heroku dynos should accept the default platform hostname even if
+# ALLOWED_HOSTS is not explicitly configured yet.
+if ".herokuapp.com" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(".herokuapp.com")
 
 
 # Application definition
